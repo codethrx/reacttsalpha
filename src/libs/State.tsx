@@ -11,10 +11,14 @@ type StateType = {
 };
 
 const State = createContext({} as CtxType);
+export enum DEFAULT_ACTIONS {
+  Switch = "Switch",
+  Blue = "Blue",
+}
 function reducer(state: StateType, action: { type: string; payload?: string }) {
-  if (action.type === "Switch")
+  if (action.type === DEFAULT_ACTIONS.Switch)
     return { ...state, color: action?.payload ?? "" };
-  if (action.type === "Blue") return { ...state, color: "blue" };
+  if (action.type === DEFAULT_ACTIONS.Blue) return { ...state, color: "blue" };
   return state;
 }
 export const Provider = ({ children }: { children: ReactNode }) => {
